@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <br/>
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>Sign In</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form class="example-form" (submit)="signIn()">
+                    <br/>
+                    <br/>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Email:</mat-label>
+                      <input matInput placeholder="example@email.com" type="email" [(ngModel)]="user.email"  name="email" required autofocus>
+                      <mat-icon  matSuffix >face</mat-icon >
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Password:</mat-label>
+                        <input matInput  type="password" [(ngModel)]="user.contrasena" name="contrasena"   required>
+                        <mat-icon  matSuffix >lock</mat-icon >
+                    </mat-form-field>
+                    <mat-card-actions>
+                        <div class="">
+                            <button  mat-flat-button color="primary" type="submit" style="display: block; width:100%">Sign In </button>
+                        </div>
+                    </mat-card-actions>
+                </form>    
+            </mat-card-content>
+            
+        </mat-card>
+    </div>
+
+</div>
+
+

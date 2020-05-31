@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <a mat-button href="#"><mat-icon>video_library</mat-icon>Store</a>
+    <a> </a>
+    <a mat-button routerLink="/user" routerLinkActive ="active">Usuario</a>
+    <div class="spacer">
+    </div>
+    <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+        
+        <a mat-raised-button color="accent" routerLink="/signin" routerLinkActive ="active">Sign In</a>
+    </ng-container>
+    <ng-template #loggedIn>
+        <ng-container *ngIf="authService.getCookie() as value">
+            <a mat-button style="cursor: pointer;" routerLink="/profile" routerLinkActive ="active"><mat-icon>face</mat-icon> {{value}} </a>
+        </ng-container>
+        <a mat-raised-button color="accent" style="cursor: pointer;" (click)="authService.logout()">Logout</a>
+    </ng-template>
+    
+</mat-toolbar>

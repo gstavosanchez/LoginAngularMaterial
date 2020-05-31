@@ -1,0 +1,55 @@
+<fieldset>
+    <legend>
+        Usuarios
+    </legend>
+    <br/>
+    <br/>
+    <div class="searc-div">
+        <button mat-raised-button (click)="newUser()">
+            <mat-icon>add</mat-icon>New
+        </button>
+        <mat-form-field class="search-form-field" floatLabel="never">
+            <input matInput [(ngModel)]="searchKey"  name="seach" placeholder="Search" class="inputSerach" (keyup)="filtrar()" autocomplete="off">
+            <button mat-button *ngIf="searchKey" matSuffix mat-icon-button aria-label="Clear" (click)="limpiar()">
+                <mat-icon>close</mat-icon>
+              </button>
+        </mat-form-field>
+        <br/>
+    </div>
+    <div class="mat-elevation-z8">
+        
+        <mat-table [dataSource]="listUsers" matSort>
+            <ng-container matColumnDef="idUsuario">
+              <mat-header-cell *matHeaderCellDef> User Id</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.idUsuario}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="nombre">
+                <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="apellido">
+                <mat-header-cell *matHeaderCellDef> apellido </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.apellido}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef> Options </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <button mat-icon-button type="submit" (click)="editUser(row.idUsuario)"><mat-icon>launch</mat-icon></button>
+                    <button mat-icon-button color="warn" (click)="deleteUser(row.idUsuario)"><mat-icon>delete_outline</mat-icon></button>
+                </mat-cell>            
+                
+            </ng-container>
+          
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+    </div>
+</fieldset>
